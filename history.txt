@@ -3,3 +3,7 @@ history list
 history print 
 history list 
 ls 
+cd home 
+s 
+ls 
+cd digi 
