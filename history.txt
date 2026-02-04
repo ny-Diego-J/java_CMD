@@ -1,0 +1,5 @@
+ls 
+history list 
+history print 
+history list 
+ls 

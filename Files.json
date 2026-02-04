@@ -1,0 +1,450 @@
+{
+  "name": "/",
+  "Parent": null,
+  "user": "root",
+  "permission": "drwxr-xr-x",
+  "lastModified": "2026-02-04T09:26:27.041073500Z",
+  "fileType": "DIRECTORY",
+  "children": [
+    {
+      "name": "lib64",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.041073500Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "sbin",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.041073500Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "proc",
+      "Parent": "/",
+      "user": "root",
+      "permission": "dr-xr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.041073500Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "lib",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.041073500Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "bin",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.041073500Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "var",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+        {
+          "name": "cache",
+          "Parent": "var",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "lib",
+          "Parent": "var",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "log",
+          "Parent": "var",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+            {
+              "name": "syslog",
+              "Parent": "log",
+              "user": "root",
+              "permission": ".rw-r--r--",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "FILE",
+              "content": ""
+
+            }
+          ]
+        },
+        {
+          "name": "tmp",
+          "Parent": "var",
+          "user": "root",
+          "permission": "drwxrwxrwt",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        }
+      ]
+    },
+    {
+      "name": "run",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "sys",
+      "Parent": "/",
+      "user": "root",
+      "permission": "dr-xr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "home",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+        {
+          "name": "digi",
+          "Parent": "home",
+          "user": "root",
+          "permission": "drwx------",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+            {
+              "name": "Pictures",
+              "Parent": "digi",
+              "user": "root",
+              "permission": "drwxr-xr-x",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "DIRECTORY",
+              "children": [
+              ]
+            },
+            {
+              "name": "test.txt",
+              "Parent": "digi",
+              "user": "root",
+              "permission": ".rw-r--r--",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "FILE",
+              "content": "Hello world"
+
+            },
+            {
+              "name": "HELLOWORLD.txt",
+              "Parent": "digi",
+              "user": "root",
+              "permission": ".rw-r--r--",
+              "lastModified": "2026-02-04T09:26:40.294559100Z",
+              "fileType": "FILE",
+              "content": ""
+
+            },
+            {
+              "name": "Desktop",
+              "Parent": "digi",
+              "user": "root",
+              "permission": "drwxr-xr-x",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "DIRECTORY",
+              "children": [
+              ]
+            },
+            {
+              "name": "Music",
+              "Parent": "digi",
+              "user": "root",
+              "permission": "drwxr-xr-x",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "DIRECTORY",
+              "children": [
+              ]
+            },
+            {
+              "name": "Documents",
+              "Parent": "digi",
+              "user": "root",
+              "permission": "drwxr-xr-x",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "DIRECTORY",
+              "children": [
+              ]
+            },
+            {
+              "name": "Templates",
+              "Parent": "digi",
+              "user": "root",
+              "permission": "drwxr-xr-x",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "DIRECTORY",
+              "children": [
+              ]
+            },
+            {
+              "name": "Downloads",
+              "Parent": "digi",
+              "user": "root",
+              "permission": "drwxr-xr-x",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "DIRECTORY",
+              "children": [
+              ]
+            },
+            {
+              "name": "Public",
+              "Parent": "digi",
+              "user": "root",
+              "permission": "drwxr-xr-x",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "DIRECTORY",
+              "children": [
+              ]
+            },
+            {
+              "name": "Videos",
+              "Parent": "digi",
+              "user": "root",
+              "permission": "drwxr-xr-x",
+              "lastModified": "2026-02-04T09:26:27.042080700Z",
+              "fileType": "DIRECTORY",
+              "children": [
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mnt",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "opt",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "dev",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "etc",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+        {
+          "name": "pacman.d",
+          "Parent": "etc",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "systemd",
+          "Parent": "etc",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "ssh",
+          "Parent": "etc",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "X11",
+          "Parent": "etc",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        }
+      ]
+    },
+    {
+      "name": "usr",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+        {
+          "name": "include",
+          "Parent": "usr",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "sbin",
+          "Parent": "usr",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "lib",
+          "Parent": "usr",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "bin",
+          "Parent": "usr",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "share",
+          "Parent": "usr",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        },
+        {
+          "name": "local",
+          "Parent": "usr",
+          "user": "root",
+          "permission": "drwxr-xr-x",
+          "lastModified": "2026-02-04T09:26:27.042080700Z",
+          "fileType": "DIRECTORY",
+          "children": [
+          ]
+        }
+      ]
+    },
+    {
+      "name": "srv",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxr-xr-x",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "tmp",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwxrwxrwt",
+      "lastModified": "2026-02-04T09:26:27.042080700Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "root",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwx------",
+      "lastModified": "2026-02-04T09:26:27.043073500Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    },
+    {
+      "name": "boot",
+      "Parent": "/",
+      "user": "root",
+      "permission": "drwx------",
+      "lastModified": "2026-02-04T09:26:27.043073500Z",
+      "fileType": "DIRECTORY",
+      "children": [
+      ]
+    }
+  ]
+}

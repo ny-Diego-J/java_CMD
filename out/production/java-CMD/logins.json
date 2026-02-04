@@ -1,0 +1,22 @@
+[
+  {
+    "name": "root",
+    "password": "1234",
+    "doesSudo": true
+  },
+  {
+    "name": "digi",
+    "password": "12345",
+    "doesSudo": false
+  },
+  {
+    "name": "user2",
+    "password": "12345",
+    "doesSudo": false
+  },
+  {
+    "name": "Farbian",
+    "password": "2009",
+    "doesSudo": false
+  }
+]

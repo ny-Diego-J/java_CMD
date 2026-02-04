@@ -1,0 +1,10 @@
+d - Directory
+. - File
+
+creator | other Users | non User |
+ rwx    | rwx         | rwx      |
+
+r - read
+w - write
+x - execute
+"-" - not permitted
