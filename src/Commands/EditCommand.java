@@ -6,6 +6,10 @@ import java.util.Scanner;
 
 public class EditCommand {
     public static void editFile(Directory dir, String[] args) {
+        if( args.length <  2) {
+            System.out.println( "Invalid arguments" );
+            return;
+        }
         Scanner sc = new Scanner(System.in);
         File entry = dir.getFile(args[1]);
         System.out.println("Enter new Text");

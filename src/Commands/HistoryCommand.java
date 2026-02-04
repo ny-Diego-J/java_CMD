@@ -10,11 +10,15 @@ public class HistoryCommand {
     private ArrayList<String> history = new ArrayList<>();
 
     public void historyMenu(String[] args) {
-        switch(args[1]) {
-            case "list"-> printHistory();
-            case "print"-> printHistory();
-            default -> System.out.println("Unknown command");
+        if (args.length < 2) {
+            System.out.println("Not enough arguments");
+            return;
         }
+            switch (args[1]) {
+                case "list" -> printHistory();
+                case "print" -> printHistory();
+                default -> System.out.println("Unknown command");
+            }
     }
 
     public void addHistory(String[] history) {
@@ -35,7 +39,7 @@ public class HistoryCommand {
 
     private String getHistory() {
         StringBuilder historyString = new StringBuilder();
-        for (String e : history){
+        for (String e : history) {
             historyString.append(e);
             historyString.append("\n");
         }
@@ -51,6 +55,7 @@ public class HistoryCommand {
             System.out.println("An error occurred.");
         }
     }
+
     public void readFile() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("history.txt"));
@@ -58,7 +63,7 @@ public class HistoryCommand {
             while ((line = br.readLine()) != null) {
                 history.add(line);
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("An error occurred.");
         }
     }

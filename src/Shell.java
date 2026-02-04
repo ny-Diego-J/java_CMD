@@ -36,6 +36,8 @@ public class Shell {
         System.out.println("- tree: list folders and subfolders in current directory");
         System.out.println("- save: save current files and directory");
         System.out.println("- load: Load current save");
+        System.out.println("- history: command history");
+
 
     }
 
@@ -88,7 +90,7 @@ public class Shell {
                 case "pwd" -> PwdCommand.printPath(currentDir);
                 case "ls" -> LsCommand.listDirectory(currentDir, args);
                 case "cd" -> currentDir = CdCommand.changeDirectory(currentDir, args[1]);
-                case "mkdir" -> currentDir.createDirectory(args[1]);
+                case "mkdir" -> MkdirCommand.makeDir(currentDir, args);
 
                 case "touch" -> TouchCommand.createFile(currentDir, args);
                 case "cat" -> CatCommand.getContent(currentDir, args);
