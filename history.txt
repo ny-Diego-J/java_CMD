@@ -1,1 +1,8 @@
-history list 
+cd digi
+history list
+ls
+history list
+cd home
+ls
+cd digi
+history list

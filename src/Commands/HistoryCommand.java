@@ -14,21 +14,23 @@ public class HistoryCommand {
             System.out.println("Not enough arguments");
             return;
         }
-            switch (args[1]) {
-                case "list" -> printHistory();
-                case "print" -> printHistory();
-                case "clear" -> clearHistory();
-                default -> System.out.println("Unknown command");
-            }
+        switch (args[1]) {
+            case "list" -> printHistory();
+            case "print" -> printHistory();
+            case "clear" -> clearHistory();
+            default -> System.out.println("Unknown command");
+        }
     }
 
-    public void addHistory(String[] history) {
+    public void addHistory(String[] input) {
         StringBuilder command = new StringBuilder();
-        for (int i = 0; i < history.length; i++) {
-            command.append(history[i]);
+        for (int i = 0; i < input.length; i++) {
+            command.append(input[i]);
             command.append(" ");
         }
-        this.history.add(command.toString());
+        if (!command.toString().trim().equals(history.getLast())) {
+            this.history.add(command.toString().trim());
+        }
 
     }
 
@@ -46,6 +48,7 @@ public class HistoryCommand {
         }
         return historyString.toString();
     }
+
     private void clearHistory() {
         history.clear();
     }
