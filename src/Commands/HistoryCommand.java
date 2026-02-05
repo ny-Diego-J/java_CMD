@@ -17,6 +17,7 @@ public class HistoryCommand {
             switch (args[1]) {
                 case "list" -> printHistory();
                 case "print" -> printHistory();
+                case "clear" -> clearHistory();
                 default -> System.out.println("Unknown command");
             }
     }
@@ -44,6 +45,9 @@ public class HistoryCommand {
             historyString.append("\n");
         }
         return historyString.toString();
+    }
+    private void clearHistory() {
+        history.clear();
     }
 
     public void printHistoryToFile() {
