@@ -37,14 +37,16 @@ public class Shell {
         System.out.println("- save: save current files and directory");
         System.out.println("- load: Load current save");
         System.out.println("- history: command history");
+        System.out.println("- chmod <attribute> <entry>: change permissions of a file/folder");
 
 
     }
 
-    public void run() {
+    public void run() throws IOException {
         Scanner sc = new Scanner(System.in);
         history.readFile();
         System.out.println("Enter \"help\" to get a list of commands.");
+        currentUser = LoginCommand.autoLogin();
         boolean running = true;
 
         while (running) {
