@@ -40,16 +40,16 @@ public class RmCommand {
     private static boolean canDeleteFromDirectory(Directory dir, User currentUser) {
         if (currentUser != null && currentUser.doesSudo) return true;
 
-        String p = dir.getPermission();
+        String permission = dir.getPermission();
 
         boolean isOwner = currentUser != null && dir.getUser().equals(currentUser.getName());
 
         if (isOwner) {
-            return p.charAt(2) == 'w' && p.charAt(3) == 'x';
+            return permission.charAt(2) == 'w' && permission.charAt(3) == 'x';
         } else if (currentUser != null) {
-            return p.charAt(5) == 'w' && p.charAt(6) == 'x';
+            return permission.charAt(5) == 'w' && permission.charAt(6) == 'x';
         } else {
-            return p.charAt(8) == 'w' && p.charAt(9) == 'x';
+            return permission.charAt(8) == 'w' && permission.charAt(9) == 'x';
         }
     }
 }

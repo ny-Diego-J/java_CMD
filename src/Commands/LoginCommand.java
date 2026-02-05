@@ -14,26 +14,31 @@ import java.util.Scanner;
 
 public class LoginCommand {
 
-    public static User login(String[] args, boolean isSudo) throws Exception {
+    /**
+     * Menu to log in the User
+     *
+     * @return the new User
+     */
+    public static User login() throws Exception {
         Scanner sc = new Scanner(System.in);
         List<User> users = parseUsers(loadJson());
-        boolean a = true;
+        boolean isNotValidInput = true;
         String username = "";
-        while (a) {
+        while (isNotValidInput) {
             System.out.print("Username: ");
             username = sc.nextLine();
             for (User u : users) {
                 if (u.name.equals(username)) {
-                    a = false;
+                    isNotValidInput = false;
                 }
                 if (username.equals("exit")) {
                     return null;
                 }
             }
         }
-        a = true;
+        isNotValidInput = true;
         String password = "";
-        while (a) {
+        while (isNotValidInput) {
             System.out.print("Password: ");
             password = sc.nextLine();
             for (User u : users) {
@@ -51,6 +56,11 @@ public class LoginCommand {
     }
 
 
+    /**
+     * Logs last Login to login.txt
+     *
+     * @param user user to log
+     */
     private static void saveLogin(User user) {
         try {
             FileWriter myWriter = new FileWriter("login.txt");
@@ -61,13 +71,24 @@ public class LoginCommand {
         }
     }
 
+    /**
+     * Make a String that gets Logged
+     *
+     * @param user User to Log
+     * @return Resturns a String that is CSV formattet
+     */
     private static String getLoginString(User user) {
-        StringBuilder sc = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
-        sc.append(user.getName() + ";" + user.getPassword() + ";" + Instant.now());
-        return sc.toString();
+        sb.append(user.getName() + ";" + user.getPassword() + ";" + Instant.now());
+        return sb.toString();
     }
 
+    /**
+     * Checks last login and logs him in if last login was before 10 min
+     *
+     * @return Returns a User to get Logged in
+     */
     public static User autoLogin() throws IOException {
 
         String getLogins = Files.readString(Path.of("login.txt"));
@@ -91,7 +112,10 @@ public class LoginCommand {
         return null;
     }
 
-
+    /**
+     * Creates String from JSON
+     * @return String of Users
+     */
     private static String loadJson() throws IOException {
         InputStream is = LoginCommand.class
                 .getClassLoader()
@@ -102,6 +126,12 @@ public class LoginCommand {
         return new String(is.readAllBytes());
     }
 
+
+    /**
+     * Creates Users from JSON file
+     * @param json JSON string to get returnt
+     * @return Returns Useres
+     */
     private static List<User> parseUsers(String json) {
         List<User> users = new ArrayList<>();
 
@@ -125,6 +155,12 @@ public class LoginCommand {
         return users;
     }
 
+    /**
+     * Get Value from Stringed JSON
+     * @param obj Objective
+     * @param key Acctual Value
+     * @return String
+     */
     private static String getValue(String obj, String key) {
         String[] parts = obj.split(",");
         for (String p : parts) {

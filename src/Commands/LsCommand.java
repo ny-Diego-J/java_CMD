@@ -19,18 +19,27 @@ public class LsCommand {
         return list;
     }
 
-    public void listDirectory(Directory dir, String[] rawArguments) {
-        StringBuilder sb = new StringBuilder();
+    /**
+     * Menu to list Directories
+     * @param dir Current Directory
+     * @param args Arguments (can vary based on input)
+     */
+    public void listDirectory(Directory dir, String[] args) {
 
-        switch (rawArguments.length) {
+        switch (args.length) {
             case 1 -> printDirectory(dir);
-            case 2 -> checkDir(dir, rawArguments);
-            case 3 -> allThree(dir, rawArguments);
+            case 2 -> checkDir(dir, args);
+            case 3 -> allThree(dir, args);
             default -> System.out.println("Invalid argument");
         }
 
     }
 
+    /**
+     * Check if input is flag or dir
+     * @param dir Current directory
+     * @param args Agrs[1] gets checkt if dir or flag
+     */
     private void checkDir(Directory dir, String[] args) {
         if (args[1].charAt(0) != '-') {
             for (Entry e : dir.getChildren().values()) {
@@ -44,12 +53,21 @@ public class LsCommand {
         }
     }
 
+    /**
+     * Prints inputted directory with flags
+     * @param dir reference directory
+     * @param args new directory and flags
+     */
     private void allThree(Directory dir, String[] args) {
         parseFlags(args[2]);
         Directory child = CdCommand.changeDirectory(dir, args[1]);
         printDirectory(child);
     }
 
+    /**
+     * Prints directory accounting flags
+     * @param dir
+     */
     private void printDirectory(Directory dir) {
         ArrayList<Entry> entries = listFile(dir);
         if (order) {

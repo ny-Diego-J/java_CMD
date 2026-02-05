@@ -3,6 +3,14 @@ package Commands;
 import filesystem.*;
 
 public class ChmodCommand {
+    /**
+     * Changes the permission of an Entry
+     * @param user current User to check for permission
+     * @param dir Dir where the Entry is
+     * @param args arguments;
+     *             args[1] = what to change
+     *             args[2] = Entry to change
+     */
     public static void changePermission(User user, Directory dir, String[] args) {
         if (args.length < 3) {
             System.out.println("Invalid arguments!");
@@ -41,9 +49,14 @@ public class ChmodCommand {
 
     }
 
-    private static void addPermission(Entry e, String permission) {
+    /**
+     * add either r, w or x to Entry
+     * @param entry Entry to change
+     * @param permission what to change (r, w or x)
+     */
+    private static void addPermission(Entry entry, String permission) {
         char permissionChar = permission.charAt(1);
-        String rawPermission = e.getPermission();
+        String rawPermission = entry.getPermission();
         switch (permissionChar) {
             case 'r':
                 for (int i = 0; i < rawPermission.length(); i++) {
@@ -73,33 +86,48 @@ public class ChmodCommand {
                 }
                 break;
         }
-        e.setPermission(rawPermission);
+        entry.setPermission(rawPermission);
     }
 
-    private static void removePermission(Entry e, String permission) {
+    /**
+     * remove either r, w or x to Entry
+     * @param entry Entry to change
+     * @param permission what to change (r, w or x)
+     */
+    private static void removePermission(Entry entry, String permission) {
         char permissionChar = permission.charAt(1);
-        String rawPermission = e.getPermission();
+        String rawPermission = entry.getPermission();
                 for (int i = 0; i < rawPermission.length(); i++) {
                     if (rawPermission.charAt(i) == permissionChar) {
                         rawPermission = rawPermission.substring(0, i) + '-' + rawPermission.substring(i + 1);
                     }
                 }
-        e.setPermission(rawPermission);
+        entry.setPermission(rawPermission);
 
     }
 
-    private static void setPermissionByNumber(Entry e, String permission) {
+    /**
+     * change permission with number from 1-7
+     * @param entry Entry to change
+     * @param permission String of numbers to change
+     */
+    private static void setPermissionByNumber(Entry entry, String permission) {
         int user = permission.charAt(0) - '0';
         int group = permission.charAt(1) - '0';
         int all = permission.charAt(2) - '0';
         StringBuilder sc = new StringBuilder();
-        sc.append(e.getPermission().charAt(0));
+        sc.append(entry.getPermission().charAt(0));
         sc.append(getPermissionLevel(user));
         sc.append(getPermissionLevel(group));
         sc.append(getPermissionLevel(all));
-        e.setPermission(sc.toString());
+        entry.setPermission(sc.toString());
     }
 
+    /**
+     * Get a String from a number from
+     * @param input number 1-7
+     * @return returns permission string
+     */
     private static String getPermissionLevel(int input) {
         switch (input) {
             case 0 -> {
@@ -128,7 +156,6 @@ public class ChmodCommand {
             }
             default -> {
                 System.out.println("Invalid input!");
-                break;
             }
         }
         return "";

@@ -7,7 +7,12 @@ import java.io.IOException;
 
 
 public class CdCommand {
-
+    /**
+     * changes the directory
+     * @param dir current directory
+     * @param newDirectory directory to change to
+     * @return return the directory to change to
+     */
     public static Directory changeDirectory(Directory dir, String newDirectory) {
         if (newDirectory == null || newDirectory.isBlank()) return dir;
 
@@ -43,7 +48,11 @@ public class CdCommand {
     }
 
 
-
+    /**
+     * splits the strings for the directories
+     * @param rawString the default String
+     * @return fromatet string for path
+     */
     private static String[] formatString(String rawString) {
         String[] parts = rawString.split("/");
 

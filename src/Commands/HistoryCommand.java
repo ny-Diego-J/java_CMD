@@ -9,6 +9,10 @@ import java.util.ArrayList;
 public class HistoryCommand {
     private ArrayList<String> history = new ArrayList<>();
 
+    /**
+     * Main History menu to choose what to do with it
+     * @param args args[1] = what to do
+     */
     public void historyMenu(String[] args) {
         if (args.length < 2) {
             System.out.println("Not enough arguments");
@@ -16,12 +20,16 @@ public class HistoryCommand {
         }
         switch (args[1]) {
             case "list" -> printHistory();
-            case "print" -> printHistory();
+            case "print" -> printHistoryToFile();
             case "clear" -> clearHistory();
             default -> System.out.println("Unknown command");
         }
     }
 
+    /**
+     * adds to the History Arraylist
+     * @param input String that gets addet
+     */
     public void addHistory(String[] input) {
         StringBuilder command = new StringBuilder();
         for (int i = 0; i < input.length; i++) {
@@ -34,12 +42,19 @@ public class HistoryCommand {
 
     }
 
+    /**
+     * Prints out the History in Terminal
+     */
     private void printHistory() {
         for (String history : history) {
             System.out.println(history);
         }
     }
 
+    /**
+     * gets the History
+     * @return Returns the history in rows
+     */
     private String getHistory() {
         StringBuilder historyString = new StringBuilder();
         for (String e : history) {
@@ -49,10 +64,16 @@ public class HistoryCommand {
         return historyString.toString();
     }
 
+    /**
+     * Resets the History
+     */
     private void clearHistory() {
         history.clear();
     }
 
+    /**
+     * Prints the History to the history.txt file
+     */
     public void printHistoryToFile() {
         try {
             FileWriter myWriter = new FileWriter("history.txt");
@@ -63,6 +84,9 @@ public class HistoryCommand {
         }
     }
 
+    /**
+     * Reads the file ands sets it to the Arraylist
+     */
     public void readFile() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("history.txt"));

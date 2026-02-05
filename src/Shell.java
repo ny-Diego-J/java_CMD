@@ -93,21 +93,18 @@ public class Shell {
                 case "pwd" -> PwdCommand.printPath(currentDir);
                 case "ls" -> lsCommand.listDirectory(currentDir, args);
                 case "cd" -> currentDir = CdCommand.changeDirectory(currentDir, args[1]);
-                case "mkdir" -> MkdirCommand.makeDir(currentDir, args);
 
+                case "mkdir" -> MkdirCommand.makeDir(currentDir, args);
                 case "touch" -> TouchCommand.createFile(currentDir, args);
                 case "cat" -> CatCommand.getContent(currentDir, args);
                 case "edit" -> EditCommand.editFile(currentDir, args);
+                case "rm" -> RmCommand.remove(currentDir, args, currentUser);
 
                 case "cp" -> CpCommand.copyFile(currentDir, args);
                 case "mv" -> MvCommand.moveFile(currentDir, args);
 
-                case "rm" -> RmCommand.remove(currentDir, args, currentUser);
-
                 case "echo" -> EchoCommand.echoOutput(args);
-
                 case "tree" -> TreeCommand.tree(currentDir);
-
                 case "chmod" -> ChmodCommand.changePermission(currentUser, currentDir, args);
 
                 case "login" -> currentUser = LoginCommand.login(args, isSudo);

@@ -23,7 +23,7 @@ public class PingCommand {
 
     private static boolean pingHost(String host, int port, int timeout) {
         try (Socket socket = new Socket()) {
-            socket.connect(new InetSocketAddress(host, port), timeout);
+            socket.connect(new InetSocketAddress(host, port), timeout); //TODO: colse connection after use
             return true;
         } catch (IOException e) {
             return false;

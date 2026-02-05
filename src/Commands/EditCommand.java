@@ -5,6 +5,11 @@ import filesystem.*;
 import java.util.Scanner;
 
 public class EditCommand {
+    /**
+     * Edits a File
+     * @param dir Directory of file
+     * @param args args[1] is Filename
+     */
     public static void editFile(Directory dir, String[] args) {
         if( args.length <  2) {
             System.out.println( "Invalid arguments" );
