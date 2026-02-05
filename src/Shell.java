@@ -87,10 +87,11 @@ public class Shell {
     }
 
     private boolean handleCommand(String[] args) {
+        LsCommand lsCommand = new LsCommand();
         try {
             switch (args[0]) {
                 case "pwd" -> PwdCommand.printPath(currentDir);
-                case "ls" -> LsCommand.listDirectory(currentDir, args);
+                case "ls" -> lsCommand.listDirectory(currentDir, args);
                 case "cd" -> currentDir = CdCommand.changeDirectory(currentDir, args[1]);
                 case "mkdir" -> MkdirCommand.makeDir(currentDir, args);
 

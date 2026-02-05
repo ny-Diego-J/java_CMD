@@ -3,34 +3,58 @@ package Commands;
 import filesystem.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class LsCommand {
 
-    public static void listDirectory(Directory dir, String[] rawArguments) {
-        StringBuilder sb = new StringBuilder();
-        boolean format = false;
-        boolean all = false;
+    private boolean all = false;
+    private boolean order = false;
+    private boolean format = false;
 
-        for (int i = 1; i < rawArguments.length; i++) {
-            sb.append(rawArguments[i]);
+    private static ArrayList<Entry> listFile(Directory dir) {
+        ArrayList<Entry> list = new ArrayList<>();
+        for (Entry e : dir.getChildren().values()) {
+            list.add(e);
         }
-
-        String argument = sb.toString();
-
-        if (argument.contains("-") && argument.contains("l")) {
-            format = true;
-        }
-        if (argument.contains("-") && argument.contains("a")) {
-            all = true;
-        }
-
-        printList(dir, format, all);
+        return list;
     }
 
-    private static void printList(Directory dir, boolean format, boolean all) {
+    public void listDirectory(Directory dir, String[] rawArguments) {
+        StringBuilder sb = new StringBuilder();
+
+        switch (rawArguments.length) {
+            case 1 -> printDirectory(dir);
+            case 2 -> checkDir(dir, rawArguments);
+            case 3 -> allThree(dir, rawArguments);
+            default -> System.out.println("Invalid argument");
+        }
+
+    }
+
+    private void checkDir(Directory dir, String[] args) {
+        if (args[1].charAt(0) != '-') {
+            for (Entry e : dir.getChildren().values()) {
+                if (e.getName().equalsIgnoreCase(args[1]) && e.getFileType().equals(FileType.DIRECTORY)) {
+                    printDirectory((Directory) e);
+                }
+            }
+        } else {
+            parseFlags(args[1]);
+            printDirectory(dir);
+        }
+    }
+
+    private void allThree(Directory dir, String[] args) {
+        parseFlags(args[2]);
+        Directory child = CdCommand.changeDirectory(dir, args[1]);
+        printDirectory(child);
+    }
+
+    private void printDirectory(Directory dir) {
         ArrayList<Entry> entries = listFile(dir);
+        if (order) {
+            entries.sort(Comparator.comparing(Entry::getLastModified));
+        }
 
         entries.sort(Comparator.comparing(e -> e.getName().toLowerCase()));
 
@@ -60,11 +84,14 @@ public class LsCommand {
         System.out.println();
     }
 
-    private static ArrayList<Entry> listFile(Directory dir) {
-        ArrayList<Entry> list = new ArrayList<>();
-        for (Entry e : dir.getChildren().values()) {
-            list.add(e);
+    private void parseFlags(String flags) {
+
+        for (int i = 1; i < flags.length(); i++) {
+            switch (flags.charAt(i)) {
+                case 'l' -> format = true;
+                case 'a' -> all = true;
+                case 't' -> order = true;
+            }
         }
-        return list;
     }
 }
