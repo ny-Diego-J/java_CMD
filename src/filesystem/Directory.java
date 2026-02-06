@@ -24,6 +24,11 @@ public class Directory extends Entry {
         return children;
     }
 
+    /**
+     * creates a directory
+     * @param name name of directory
+     * @return directory
+     */
     public Directory createDirectory(String name) {
         if (children.containsKey(name)) {
             System.out.println("Name already exists");
@@ -35,6 +40,12 @@ public class Directory extends Entry {
         return dir;
     }
 
+    /**
+     * creates a directory that needs sudo rights
+     * @param name name of directory
+     * @param permission permission string r, w and x
+     * @return directory
+     */
     public Directory createSudoDirectory(String name, String permission) {
         if (children.containsKey(name)) {
             System.out.println("Name already exists");
@@ -45,6 +56,11 @@ public class Directory extends Entry {
         return dir;
     }
 
+    /**
+     * gets if a file current dir and returns it
+     * @param name name of file
+     * @return file if found else just null
+     */
     public File getFile(String name) {
         Entry e = this.getChildren().get(name);
         File entry = null;
@@ -75,7 +91,10 @@ public class Directory extends Entry {
         }
     }
 
-
+    /**
+     * gets current path
+     * @return returns path a string
+     */
     public String getPath() {
         ArrayList<String> parts = new ArrayList<>();
 
@@ -95,7 +114,12 @@ public class Directory extends Entry {
         return sb.toString();
     }
 
-
+    /**
+     * creates a file
+     * @param name name of file
+     * @param content content of file
+     * @return the file
+     */
     public File createFile(String name, String content) {
         if (children.containsKey(name)) {
             System.out.println("Name already exists");

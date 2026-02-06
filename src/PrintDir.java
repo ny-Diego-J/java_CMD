@@ -2,15 +2,27 @@ import Commands.*;
 import filesystem.Directory;
 
 public class PrintDir {
-    public static void printDir(Directory dir, User user) {
+    /**
+     * prints out the directory to display bevore
+     * @param dir dir to display
+     * @param user user to get
+     */
+    public static void printDir(Directory dir, User user) { //TODO: Fix hardcodet "~"
         if (user != null) {
             System.out.print(user.name + "$ ");
         }
         String rawString = dir.getPath();
-        rawString = rawString.replace("/home", "~");
+        assert user != null;
+
+        rawString = rawString.replace("/home/digi", "~");
         System.out.print(rawString + " ❯ ");
     }
 
+    /**
+     * backup to get standard directories
+     * @param root root directory
+     * @param username name of normal user
+     */
     public static void initDirs(Directory root, String username) {
 
         Directory bin = root.createSudoDirectory("bin", "drwxr-xr-x");

@@ -107,7 +107,7 @@ public class Shell {
                 case "tree" -> TreeCommand.tree(currentDir);
                 case "chmod" -> ChmodCommand.changePermission(currentUser, currentDir, args);
 
-                case "login" -> currentUser = LoginCommand.login(args, isSudo);
+                case "login" -> currentUser = LoginCommand.login();
                 case "whoami" -> System.out.println(currentUser == null ? "guest" : currentUser.name);
                 case "logout" -> currentUser = null;
 

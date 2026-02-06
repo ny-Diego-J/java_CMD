@@ -7,11 +7,20 @@ import java.util.Comparator;
 import java.util.List;
 
 public class TreeCommand {
+    /**
+     * prints all dirs and subdirs
+     * @param root dir to list from
+     */
     public static void tree(Directory root) {
         System.out.println(root.getName());
         printDir(root, "");
     }
 
+    /**
+     * Prints the directory itself
+     * @param dir dir to print from
+     * @param prefix spacing. mostly just ""
+     */
     private static void printDir(Directory dir, String prefix) {
         List<Entry> entries = new ArrayList<>(dir.getChildren().values());
 

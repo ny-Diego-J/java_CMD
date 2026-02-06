@@ -8,6 +8,10 @@ import java.util.Iterator;
 
 public class SaveToJson {
 
+    /**
+     * saves all dirs to a JSON
+     * @param root root directory
+     */
     public static void saveToJson(Directory root) {
         StringBuilder sb = new StringBuilder();
 
@@ -16,6 +20,11 @@ public class SaveToJson {
         writeToFile("Files.json", sb.toString());
     }
 
+    /**
+     * Writes the
+     * @param fileName name of output file
+     * @param content content of file
+     */
     private static void writeToFile(String fileName, String content) {
         try {
             Files.writeString(Path.of(fileName), content, StandardCharsets.UTF_8);
@@ -25,6 +34,12 @@ public class SaveToJson {
         }
     }
 
+    /**
+     * Writes the Entry for 1 File
+     * @param sb Stringbuilder
+     * @param entry entry to create JSON object
+     * @param indent spacing from left
+     */
     private static void writeEntry(StringBuilder sb, Entry entry, int indent) {
         indent(sb, indent).append("{\n");
 
@@ -57,6 +72,14 @@ public class SaveToJson {
         indent(sb, indent).append("}");
     }
 
+    /**
+     *
+     * @param sb
+     * @param indent
+     * @param key
+     * @param value
+     * @param comma
+     */
     private static void writeField(StringBuilder sb, int indent, String key, String value, boolean comma) {
         indent(sb, indent).append("\"").append(escapeJson(key)).append("\": ");
         if (value == null) {
@@ -68,11 +91,22 @@ public class SaveToJson {
         sb.append("\n");
     }
 
+    /**
+     * Gets indent for formatting
+     * @param sb stringbuilder
+     * @param spaces
+     * @return the stringbuilder
+     */
     private static StringBuilder indent(StringBuilder sb, int spaces) {
         for (int i = 0; i < spaces; i++) sb.append(' ');
         return sb;
     }
 
+    /**
+     * Fixes custom characters
+     * @param s string to check
+     * @return the fixed string
+     */
     private static String escapeJson(String s) {
         if (s == null) return null;
         StringBuilder out = new StringBuilder(s.length() + 16);

@@ -146,3 +146,36 @@ cd digi
 ls
 ls -l
 exit
+ping 8.8.8.8
+ping glas-flex.ch
+ping 8.8.8.8
+ping noseryoung.ch
+ping google.com
+ping archlinux.com
+ping omarchy.com
+ping s.asd
+ping 8.8.8.8
+ping sada
+ping 8.8
+ping noserjoung.ch
+ping 8.8
+ls
+cd root
+ls
+touch test.txt
+ls
+pwd
+CD ..
+cd ..
+ls
+history list
+cd home/digi
+ls
+cd home
+cd digi
+ls
+login
+cd home
+ls
+cd digi
+ls

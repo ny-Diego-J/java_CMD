@@ -7,9 +7,9 @@ import java.util.Comparator;
 
 public class LsCommand {
 
-    private boolean all = false;
-    private boolean order = false;
-    private boolean format = false;
+    private boolean printAll = false;
+    private boolean doOrder = false;
+    private boolean doFormat = false;
 
     private static ArrayList<Entry> listFile(Directory dir) {
         ArrayList<Entry> list = new ArrayList<>();
@@ -70,14 +70,14 @@ public class LsCommand {
      */
     private void printDirectory(Directory dir) {
         ArrayList<Entry> entries = listFile(dir);
-        if (order) {
+        if (doOrder) {
             entries.sort(Comparator.comparing(Entry::getLastModified));
         }
 
         entries.sort(Comparator.comparing(e -> e.getName().toLowerCase()));
 
-        if (all) {
-            if (format) {
+        if (printAll) {
+            if (doFormat) {
                 System.out.println(dir.getPermission() + "\t" + dir.getUser() + "\t" + dir.getFormattedLastModified() + "\t" + ".");
                 Directory parent = dir.getParent();
                 if (parent != null) {
@@ -93,7 +93,7 @@ public class LsCommand {
         }
 
         for (Entry entry : entries) {
-            if (format) {
+            if (doFormat) {
                 System.out.println(entry.getPermission() + "\t" + entry.getUser() + "\t" + entry.getFormattedLastModified() + "\t" + entry.getName());
             } else {
                 System.out.print(entry.getName() + " ");
@@ -102,13 +102,17 @@ public class LsCommand {
         System.out.println();
     }
 
+    /**
+     * check if the input activates the flags
+     * @param flags String of flags
+     */
     private void parseFlags(String flags) {
 
         for (int i = 1; i < flags.length(); i++) {
             switch (flags.charAt(i)) {
-                case 'l' -> format = true;
-                case 'a' -> all = true;
-                case 't' -> order = true;
+                case 'l' -> doFormat = true;
+                case 'a' -> printAll = true;
+                case 't' -> doOrder = true;
             }
         }
     }

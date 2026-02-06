@@ -4,6 +4,12 @@ import filesystem.*;
 
 public class RmCommand {
 
+    /**
+     * Remove a file or a directory
+     * @param dir current directory
+     * @param args flags and file/directory name
+     * @param currentUser User to get permissions
+     */
     public static void remove(Directory dir, String[] args, User currentUser) {
         if (args.length < 2) {
             System.out.println("Usage: rm <name>");
@@ -37,6 +43,12 @@ public class RmCommand {
         System.out.println("Successfully removed " + target.getName());
     }
 
+    /**
+     * check if user is enabled to
+     * @param dir
+     * @param currentUser
+     * @return
+     */
     private static boolean canDeleteFromDirectory(Directory dir, User currentUser) {
         if (currentUser != null && currentUser.doesSudo) return true;
 
