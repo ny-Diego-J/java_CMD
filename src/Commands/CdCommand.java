@@ -37,7 +37,7 @@ public class CdCommand {
 
             Entry child = current.getChildren().get(part);
             if (!(child instanceof Directory)) {
-                System.out.println("Invalid directory: " + part);
+                System.out.println(Colors.RED + "Invalid directory: " + part + Colors.RESET);
                 return dir;
             }
 

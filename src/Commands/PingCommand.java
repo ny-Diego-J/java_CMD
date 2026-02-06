@@ -23,7 +23,7 @@ public class PingCommand {
                 return;
             }
         }
-        System.out.println("Could not find hostname or port");
+        Colors.printError("Could not find hostname or port");
 
     }
 

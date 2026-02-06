@@ -11,23 +11,25 @@ public class HistoryCommand {
 
     /**
      * Main History menu to choose what to do with it
+     *
      * @param args args[1] = what to do
      */
     public void historyMenu(String[] args) {
         if (args.length < 2) {
-            System.out.println("Not enough arguments");
+            Colors.printError("Not enough arguments");
             return;
         }
         switch (args[1]) {
             case "list" -> printHistory();
             case "print" -> printHistoryToFile();
             case "clear" -> clearHistory();
-            default -> System.out.println("Unknown command");
+            default -> Colors.printError("Unknown command");
         }
     }
 
     /**
      * adds to the History Arraylist
+     *
      * @param input String that gets addet
      */
     public void addHistory(String[] input) {
@@ -36,7 +38,9 @@ public class HistoryCommand {
             command.append(input[i]);
             command.append(" ");
         }
-        if (!command.toString().trim().equals(history.getLast())) {
+        if (history.isEmpty()) {
+            this.history.add(command.toString().trim());
+        } else if (!command.toString().trim().equals(history.getLast())) {
             this.history.add(command.toString().trim());
         }
 
@@ -53,6 +57,7 @@ public class HistoryCommand {
 
     /**
      * gets the History
+     *
      * @return Returns the history in rows
      */
     private String getHistory() {
@@ -80,7 +85,7 @@ public class HistoryCommand {
             myWriter.write(getHistory());
             myWriter.close();  // must close manually
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            Colors.printError("An error occurred.");
         }
     }
 
@@ -95,7 +100,7 @@ public class HistoryCommand {
                 history.add(line);
             }
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            Colors.printError("An error occurred.");
         }
     }
 

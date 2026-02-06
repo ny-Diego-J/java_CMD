@@ -2,6 +2,7 @@ package Commands;
 
 import filesystem.*;
 
+import java.security.Permission;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -21,7 +22,8 @@ public class LsCommand {
 
     /**
      * Menu to list Directories
-     * @param dir Current Directory
+     *
+     * @param dir  Current Directory
      * @param args Arguments (can vary based on input)
      */
     public void listDirectory(Directory dir, String[] args) {
@@ -30,14 +32,15 @@ public class LsCommand {
             case 1 -> printDirectory(dir);
             case 2 -> checkDir(dir, args);
             case 3 -> allThree(dir, args);
-            default -> System.out.println("Invalid argument");
+            default -> Colors.printError("Invalid argument");
         }
 
     }
 
     /**
      * Check if input is flag or dir
-     * @param dir Current directory
+     *
+     * @param dir  Current directory
      * @param args Agrs[1] gets checkt if dir or flag
      */
     private void checkDir(Directory dir, String[] args) {
@@ -55,7 +58,8 @@ public class LsCommand {
 
     /**
      * Prints inputted directory with flags
-     * @param dir reference directory
+     *
+     * @param dir  reference directory
      * @param args new directory and flags
      */
     private void allThree(Directory dir, String[] args) {
@@ -66,7 +70,8 @@ public class LsCommand {
 
     /**
      * Prints directory accounting flags
-     * @param dir
+     *
+     * @param dir directory to print
      */
     private void printDirectory(Directory dir) {
         ArrayList<Entry> entries = listFile(dir);
@@ -78,13 +83,15 @@ public class LsCommand {
 
         if (printAll) {
             if (doFormat) {
-                System.out.println(dir.getPermission() + "\t" + dir.getUser() + "\t" + dir.getFormattedLastModified() + "\t" + ".");
+                printPermission(dir.getPermission());
+                System.out.println("\t" + Colors.YELLOW + dir.getUser() + "\t" + Colors.BLUE + dir.getFormattedLastModified() + "\t" + "." + Colors.RESET);
                 Directory parent = dir.getParent();
                 if (parent != null) {
-                    System.out.println(parent.getPermission() + "\t" + parent.getUser() + "\t" + parent.getFormattedLastModified() + "\t" + "..");
+                    printPermission(parent.getPermission());
+                    System.out.println("\t" + Colors.YELLOW + parent.getUser() + "\t" + Colors.BLUE + parent.getFormattedLastModified() + "\t" + ".." + Colors.RESET);
                 } else {
-                    // falls root kein parent hat
-                    System.out.println(dir.getPermission() + "\t" + dir.getUser() + "\t" + dir.getFormattedLastModified() + "\t" + "..");
+                    printPermission(dir.getPermission());
+                    System.out.println("\t" + Colors.YELLOW + dir.getUser() + "\t" + Colors.BLUE + dir.getFormattedLastModified() + "\t" + ".." + Colors.RESET);
                 }
             } else {
                 System.out.print(". ");
@@ -94,7 +101,8 @@ public class LsCommand {
 
         for (Entry entry : entries) {
             if (doFormat) {
-                System.out.println(entry.getPermission() + "\t" + entry.getUser() + "\t" + entry.getFormattedLastModified() + "\t" + entry.getName());
+                printPermission(dir.getPermission());
+                System.out.println("\t" + Colors.YELLOW + entry.getUser() + "\t" + Colors.BLUE + entry.getFormattedLastModified() + "\t" + (entry.getFileType() == FileType.FILE ? Colors.RESET: Colors.BLUE) + entry.getName() + Colors.RESET);
             } else {
                 System.out.print(entry.getName() + " ");
             }
@@ -103,7 +111,25 @@ public class LsCommand {
     }
 
     /**
+     * Prints permission in right colors
+     *
+     * @param permission permission string
+     */
+    private void printPermission(String permission) {
+        for (int i = 0; i < permission.length(); i++) {
+            switch (permission.charAt(i)) {
+                case 'd' -> System.out.print(Colors.BLUE + "d" + Colors.RESET);
+                case 'r' -> System.out.print(Colors.YELLOW + "r" + Colors.RESET);
+                case 'w' -> System.out.print(Colors.RED + "w" + Colors.RESET);
+                case 'x' -> System.out.print(Colors.GREEN + "x" + Colors.RESET);
+                case '-' -> System.out.print(Colors.RESET + "-");
+            }
+        }
+    }
+
+    /**
      * check if the input activates the flags
+     *
      * @param flags String of flags
      */
     private void parseFlags(String flags) {

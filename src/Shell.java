@@ -45,7 +45,7 @@ public class Shell {
     public void run() throws IOException {
         Scanner sc = new Scanner(System.in);
         history.readFile();
-        System.out.println("Enter \"help\" to get a list of commands.");
+        System.out.println(Colors.BLUE + "Enter \"help\" to get a list of commands." + Colors.RESET);
         currentUser = LoginCommand.autoLogin();
         boolean running = true;
 
@@ -64,7 +64,7 @@ public class Shell {
                     continue;
                 args = java.util.Arrays.copyOfRange(args, 1, args.length);
                 if (args.length == 0) {
-                    System.out.println("Usage: sudo <command>");
+                    System.out.println(Colors.GREEN +"Usage: sudo <command>" + Colors.RESET);
                     continue;
                 }
             }
@@ -76,11 +76,11 @@ public class Shell {
 
     private boolean canSudo() {
         if (currentUser == null) {
-            System.out.println("Not logged in");
+            Colors.printError("Not logged in");
             return false;
         }
         if (!currentUser.doesSudo) {
-            System.out.println("Permission denied (sudo required)");
+            Colors.printError("Permission denied (sudo required)");
             return false;
         }
         return true;
@@ -122,11 +122,11 @@ public class Shell {
                     return false;
                 }
                 case "help" -> printHelp();
-                default -> System.out.println("Invalid command");
+                default -> Colors.printError("Invalid command");
             }
             return true;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Colors.printError(e.getMessage());
             return true;
         }
     }

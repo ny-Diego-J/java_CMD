@@ -13,15 +13,15 @@ public class ChmodCommand {
      */
     public static void changePermission(User user, Directory dir, String[] args) {
         if (args.length < 3) {
-            System.out.println("Invalid arguments!");
+            Colors.printError("Invalid arguments");
             return;
         }
         if (user == null) {
-            System.out.println("You don't have permission to use this command!");
+            Colors.printError("You don't have permission to use this command!");
             return;
         }
         if (!user.doesSudo) {
-            System.out.println("You dom't have permission to use this command!");
+            Colors.printError("You don't have permission to use this command!");
             return;
         }
 
@@ -35,7 +35,7 @@ public class ChmodCommand {
             }
         }
         if (change == null) {
-            System.out.println("This ins't a valid directory/file");
+            Colors.printError("This ins't a valid directory/file");
             return;
         }
 
@@ -155,7 +155,7 @@ public class ChmodCommand {
                 return "rwx";
             }
             default -> {
-                System.out.println("Invalid input!");
+                Colors.printError("Invalid input");
             }
         }
         return "";

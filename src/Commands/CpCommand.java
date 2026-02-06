@@ -11,7 +11,7 @@ public class CpCommand {
      */
     public static void copyFile(Directory dir, String[] args) {
         if (args.length < 3) {
-            System.out.println("Invalid arguments");
+            Colors.printError("Invalid arguments");
             return;
         }
         File copyFile = dir.getFile(args[1]);

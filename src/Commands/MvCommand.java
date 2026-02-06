@@ -10,7 +10,7 @@ public class MvCommand {
      */
     public static void moveFile(Directory dir, String[] args) {
         if (args.length < 3){
-            System.out.println("Invalid arguments!");
+            Colors.printError("Invalid arguments!");
             return;
         }
         File moveFile = dir.getFile(args[1]);

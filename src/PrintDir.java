@@ -7,15 +7,16 @@ public class PrintDir {
      * @param dir dir to display
      * @param user user to get
      */
-    public static void printDir(Directory dir, User user) { //TODO: Fix hardcodet "~"
+    public static void printDir(Directory dir, User user) { //TODO: Fix hardcodet "~" /*
         if (user != null) {
-            System.out.print(user.name + "$ ");
+            System.out.print(Colors.CYAN + user.name + "$ " + Colors.RESET);
         }
+
         String rawString = dir.getPath();
         assert user != null;
 
         rawString = rawString.replace("/home/digi", "~");
-        System.out.print(rawString + " ❯ ");
+        System.out.print(Colors.CYAN  + rawString + " ❯ " + Colors.RESET);
     }
 
     /**

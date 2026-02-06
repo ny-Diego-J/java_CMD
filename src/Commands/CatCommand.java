@@ -10,6 +10,10 @@ public class CatCommand {
      */
     public static void getContent(Directory dir, String[] args){
         File entry = dir.getFile(args[1]);
+        if (entry == null){
+            Colors.printError("No such file or directory");
+            return;
+        }
         System.out.println(entry.getContent());
     }
 }

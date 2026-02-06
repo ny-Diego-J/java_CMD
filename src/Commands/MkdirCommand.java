@@ -10,7 +10,7 @@ public class MkdirCommand {
      */
     public static void makeDir(Directory dir, String[] dirName) {
         if (dirName.length < 2){
-            System.out.println("Invalid arguments!");
+            Colors.printError("Invalid arguments!");
             return;
         }
         dir.createDirectory(dirName[1]);

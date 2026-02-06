@@ -24,17 +24,17 @@ public class RmCommand {
 
         Entry target = dir.getChildren().get(targetName);
         if (target == null) {
-            System.out.println("Error: '" + targetName + "' not found");
+            Colors.printError("Error: '" + targetName + "' not found");
             return;
         }
 
         if (!canDeleteFromDirectory(dir, currentUser)) {
-            System.out.println("Error: User doesn't have permission to remove " + target.getName());
+            Colors.printError("Error: User doesn't have permission to remove " + target.getName());
             return;
         }
 
         if (target instanceof Directory d && !d.getChildren().isEmpty() && !flags.equals("-rf")) {
-            System.out.println("Error: Directory not empty: " + target.getName());
+            Colors.printError("Error: Directory not empty: " + target.getName());
             return;
         }
 

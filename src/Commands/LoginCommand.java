@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,6 +36,11 @@ public class LoginCommand {
                     return null;
                 }
             }
+            if (isNotValidInput) {
+                Colors.printError("User not found");
+
+            }
+
         }
         isNotValidInput = true;
         String password = "";
@@ -51,8 +57,9 @@ public class LoginCommand {
                     return null;
                 }
             }
+            Colors.printError("Invalid password");
         }
-        throw new Exception("Login failed");
+        throw new Exception(Colors.RED + "Login failed" + Colors.RESET);
     }
 
 
@@ -67,7 +74,7 @@ public class LoginCommand {
             myWriter.write(getLoginString(user));
             myWriter.close();  // must close manually
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            Colors.printError("An error occurred.");
         }
     }
 
@@ -114,6 +121,7 @@ public class LoginCommand {
 
     /**
      * Creates String from JSON
+     *
      * @return String of Users
      */
     private static String loadJson() throws IOException {
@@ -121,7 +129,7 @@ public class LoginCommand {
                 .getClassLoader()
                 .getResourceAsStream("logins.json");
 
-        if (is == null) throw new IOException("logins.json not found in src");
+        if (is == null) throw new IOException(Colors.RED + "logins.json not found in src" + Colors.RESET);
 
         return new String(is.readAllBytes());
     }
@@ -129,6 +137,7 @@ public class LoginCommand {
 
     /**
      * Creates Users from JSON file
+     *
      * @param json JSON string to get returnt
      * @return Returns Useres
      */
@@ -157,6 +166,7 @@ public class LoginCommand {
 
     /**
      * Get Value from Stringed JSON
+     *
      * @param obj Objective
      * @param key Acctual Value
      * @return String

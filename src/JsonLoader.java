@@ -3,6 +3,7 @@ import filesystem.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import Commands.*;
 
 public class JsonLoader {
 
@@ -127,7 +128,7 @@ public class JsonLoader {
 
     private static void expect(char c) {
         if (json.charAt(i) != c)
-            throw new RuntimeException("Expected '" + c + "' at " + i);
+            throw new RuntimeException(Colors.RED + "Expected '" + c + "' at " + i + Colors.RESET);
         i++;
     }
 

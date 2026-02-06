@@ -12,7 +12,7 @@ public class EditCommand {
      */
     public static void editFile(Directory dir, String[] args) {
         if( args.length <  2) {
-            System.out.println( "Invalid arguments" );
+            Colors.printError("Invalid arguments");
             return;
         }
         Scanner sc = new Scanner(System.in);

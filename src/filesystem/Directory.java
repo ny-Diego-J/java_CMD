@@ -1,5 +1,7 @@
 package filesystem;
 
+import Commands.Colors;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +33,7 @@ public class Directory extends Entry {
      */
     public Directory createDirectory(String name) {
         if (children.containsKey(name)) {
-            System.out.println("Name already exists");
+            Colors.printError("Name already exists");
             return null;
         }
 
@@ -48,7 +50,7 @@ public class Directory extends Entry {
      */
     public Directory createSudoDirectory(String name, String permission) {
         if (children.containsKey(name)) {
-            System.out.println("Name already exists");
+            Colors.printError("Name already exists");
             return null;
         }
         Directory dir = new Directory(name, this, permission);
@@ -69,7 +71,7 @@ public class Directory extends Entry {
         }
 
         if (entry == null) {
-            System.out.println("Entry not found");
+            Colors.printError("File not found");
             return null;
         } else {
             return entry;
@@ -84,7 +86,7 @@ public class Directory extends Entry {
         }
 
         if (entry == null) {
-            System.out.println("Entry not found");
+            Colors.printError("Directory not found");
             return null;
         } else {
             return entry;
@@ -122,7 +124,7 @@ public class Directory extends Entry {
      */
     public File createFile(String name, String content) {
         if (children.containsKey(name)) {
-            System.out.println("Name already exists");
+            Colors.printError("Name already exists");
             return null;
         }
 
@@ -134,7 +136,8 @@ public class Directory extends Entry {
 
     public void addEntry(Entry entry) {
         if (children.containsKey(entry.getName())) {
-            throw new IllegalArgumentException("Name already exists: " + entry.getName());
+            Colors.printError("Name already exists");
+            return;
         }
         entry.setParent(this);
         children.put(entry.getName(), entry);
